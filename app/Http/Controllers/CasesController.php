@@ -13,7 +13,7 @@ class CasesController extends Controller
      */
     public function index()
     {
-        //
+        return view('cases.cases-list');
     }
 
     /**

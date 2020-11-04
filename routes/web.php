@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ClientsController;
+use App\Http\Controllers\CasesController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,6 +18,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+//CLIENTS
 Route::get('clients-list', [ClientsController::class, 'index'])->name('showClients');
 Route::get('add-client', [ClientsController::class, 'create'])->name('create-client');
 Route::post('store-client', [ClientsController::class, 'store'])->name('store-c');
@@ -24,3 +26,7 @@ Route::get('edit-form/{id}', [ClientsController::class, 'edit'])->name('edit-for
 Route::post('update/{id}', [ClientsController::class, 'update'])->name('update-c');
 Route::post('update-status/{id}', [ClientsController::class, 'status'])->name('update-c');
 Route::post('delete/{id}', [ClientsController::class, 'destroy']);
+
+//CASES
+Route::get('cases-list', [CasesController::class, 'index'])->name('showCases');
+

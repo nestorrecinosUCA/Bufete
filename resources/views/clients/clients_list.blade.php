@@ -86,9 +86,9 @@
                   </div>
               @endforeach
       </div>
-      <div>
-          <button>
-              <a href="{{route('create-client')}}">
+      <div class="container">
+          <button class="btn btn-primary">
+              <a href="{{route('create-client')}}" class="text">
                   Agregar cliente
               </a>
           </button>
