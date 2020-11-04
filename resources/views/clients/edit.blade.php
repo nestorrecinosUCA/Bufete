@@ -10,10 +10,15 @@
   </head>
 
   <body class="backg-color">
+    <button class="btn">
+      <a href="{{route('showClients')}}" class="title">
+          Inicio
+      </a>
+  </button>
     @foreach ($client as $c)
     <h1 class="title center my-2">Editar a {{$c->name}} {{$c->lastname}}</h1>
     <div class="container text center">
-      <form action="{{route('store-c')}}" method="POST">
+      <form action="/update/{{$c->id}}" method="POST">
           @csrf
           <label for="name">Actualizar nombre</label>
           <br>
@@ -45,6 +50,7 @@
           </button>
       </form>
     </div>
+    
     @endforeach
   </body>
 </html>

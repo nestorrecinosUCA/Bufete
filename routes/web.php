@@ -22,4 +22,5 @@ Route::get('add-client', [ClientsController::class, 'create'])->name('create-cli
 Route::post('store-client', [ClientsController::class, 'store'])->name('store-c');
 Route::get('edit-form/{id}', [ClientsController::class, 'edit'])->name('edit-form');
 Route::post('update/{id}', [ClientsController::class, 'update'])->name('update-c');
+Route::post('update-status/{id}', [ClientsController::class, 'status'])->name('update-c');
 Route::post('delete/{id}', [ClientsController::class, 'destroy']);

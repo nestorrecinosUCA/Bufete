@@ -93,9 +93,35 @@ class ClientsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
-    }
+        $request->validate([
+            'name' => 'required|string',
+            'lastname' => 'required|string',
+            'dui' => 'required|string|max:10',
+            'nit' => 'required|string|max:17',
+            'address' => 'required|string',
+            'telephone' => 'integer',
+            'cellphone' => 'integer',
+            'notes' => 'required|string'
+        ]);
+        $updateClient = Client::find($id);
+        $updateClient->name = $request->name;
+        $updateClient->lastname = $request->lastname;
+        $updateClient->dui = $request->dui;
+        $updateClient->nit = $request->nit;
+        $updateClient->address = $request->address;
+        $updateClient->telephone = $request->telephone;
+        $updateClient->cellphone = $request->cellphone;
+        $updateClient->notes = $request->notes;
+        $updateClient->save();
 
+        return redirect()->route('showClients');
+    }
+    public function status(Request $request, $id){
+        $updateClient = Client::find($id);
+        $updateClient->status = $request->sts;
+        $updateClient->save();
+        return redirect()->route('showClients');
+    }
     /**
      * Remove the specified resource from storage.
      *

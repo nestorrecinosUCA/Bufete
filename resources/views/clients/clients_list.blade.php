@@ -67,6 +67,21 @@
                               <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Edit_icon_%28the_Noun_Project_30184%29.svg/1024px-Edit_icon_%28the_Noun_Project_30184%29.svg.png" width="35" alt="Editar">
                           </a>
                       </div>
+                      <div class="my-2 center">
+                        @if ($client->status == "active")
+                          <form action="/update-status/{{$client->id}}" method="POST">
+                            @csrf
+                            <input type="hidden" name="sts" value="inactive">
+                            <button class="btn btn-danger">Desactivar a {{$client->name}}</button>
+                          </form>
+                        @else
+                          <form action="/update-status/{{$client->id}}" method="POST">
+                            @csrf
+                            <input type="hidden" name="sts" value="active">
+                            <button class="btn btn-success">Activar a {{$client->name}}</button>
+                          </form>
+                        @endif
+                      </div>
                   </div>
                   </div>
               @endforeach
