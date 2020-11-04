@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Client;
 use Illuminate\Http\Request;
 
 class ClientsController extends Controller
@@ -13,7 +14,8 @@ class ClientsController extends Controller
      */
     public function index()
     {
-        return view('clients.clients_list');
+        $clients = Client::orderby('lastname')->get();
+        return view('clients.clients_list', compact('clients'));
     }
 
     /**
@@ -23,7 +25,7 @@ class ClientsController extends Controller
      */
     public function create()
     {
-        //
+        return view('clients.add');
     }
 
     /**
@@ -34,7 +36,29 @@ class ClientsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|string',
+            'lastname' => 'required|string',
+            'dui' => 'required|string|max:10',
+            'nit' => 'required|string|max:17',
+            'address' => 'required|string',
+            'telephone' => 'integer',
+            'cellphone' => 'integer',
+            'notes' => 'required|string'
+        ]);
+        $newClient = Client::create([
+            'name' => $request->name,
+            'lastname' => $request->lastname,
+            'dui' => $request->dui,
+            'nit' => $request->nit,
+            'address' => $request->address,
+            'telephone' => $request->telephone,
+            'cellphone' => $request->cellphone,
+            'notes' => $request->notes,
+            'status' => 'active'
+        ]);
+
+        return redirect()->route('showClients');
     }
 
     /**
@@ -56,7 +80,8 @@ class ClientsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $client = Client::where('id', $id)->get();
+        return view('clients.edit', compact('client'));
     }
 
     /**
@@ -79,6 +104,8 @@ class ClientsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = Client::find($id);
+        $user->delete();
+        return redirect()->route('showClients');
     }
 }

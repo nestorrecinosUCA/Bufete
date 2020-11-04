@@ -18,3 +18,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('clients-list', [ClientsController::class, 'index'])->name('showClients');
+Route::get('add-client', [ClientsController::class, 'create'])->name('create-client');
+Route::post('store-client', [ClientsController::class, 'store'])->name('store-c');
+Route::get('edit-form/{id}', [ClientsController::class, 'edit'])->name('edit-form');
+Route::post('update/{id}', [ClientsController::class, 'update'])->name('update-c');
+Route::post('delete/{id}', [ClientsController::class, 'destroy']);

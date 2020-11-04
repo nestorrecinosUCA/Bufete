@@ -15,11 +15,12 @@ class CreateCasesTable extends Migration
     {
         Schema::create('cases', function (Blueprint $table) {
             $table->id();
-            $table->integer('number_of_case');
+            $table->integer('number_of_case')->unique();
             $table->string('folio', 91);
             $table->string('name_of_case', 91);
             $table->text('requirements');
             $table->text('comments');
+            $table->string('status');
             $table->timestamps();
         });
     }

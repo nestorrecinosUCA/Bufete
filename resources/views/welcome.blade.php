@@ -10,7 +10,7 @@
   </head>
 
   <body class="backg-color">
-      <div class="text-a">
+      <div class="center">
           <h1 class="title">Bufete de abogados</h1>
           <button>
               <a href="{{route('showClients')}}">

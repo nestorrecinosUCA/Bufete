@@ -17,12 +17,13 @@ class CreateClientsTable extends Migration
             $table->id();
             $table->string('name', 30);
             $table->string('lastname', 30);
-            $table->string('DUI', 10);
-            $table->string('NIT', 17);
-            $table->string('location', 100);
+            $table->string('dui', 10);
+            $table->string('nit', 17);
+            $table->string('address', 100);
             $table->integer('telephone')->nullable();
             $table->integer('cellphone')->nullable();
             $table->text('notes');
+            $table->string('status');
             $table->timestamps();
         });
     }

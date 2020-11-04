@@ -4,3 +4,18 @@
 .title{
     color: #fe463b;
 }
+.center{
+    text-align: center;
+}
+.active{
+    background-color: #9bd290;
+}
+.no-active{
+    background-color: #f7a3b2;
+}
+.pendiente{
+    background-color: #f2da83;
+}
+.text{
+    color: white;
+}
