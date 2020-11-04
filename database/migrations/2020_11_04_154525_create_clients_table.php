@@ -20,8 +20,8 @@ class CreateClientsTable extends Migration
             $table->string('DUI', 10);
             $table->string('NIT', 17);
             $table->string('location', 100);
-            $table->integer('telephone');
-            $table->integer('cellphone');
+            $table->integer('telephone')->nullable();
+            $table->integer('cellphone')->nullable();
             $table->text('notes');
             $table->timestamps();
         });
